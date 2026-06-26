@@ -1,0 +1,12 @@
+numpy
+pandas
+opencv-python
+scikit-image
+imageio
+rasterio
+torch
+torchvision
+torchaudio
+scikit-learn
+xgboost
+tqdm
