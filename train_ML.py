@@ -99,5 +99,3 @@ for length in length_names:
                 pickle.dump(model, f)
 
         pd.DataFrame(log_data).to_csv(f'logs/{model_name}_{length}.csv', index=False)
-
-print("训练完成")
