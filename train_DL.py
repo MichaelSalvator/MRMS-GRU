@@ -120,5 +120,3 @@ for length in length_names:
             torch.save(model.state_dict(), f'weights/{model_name}_{length}.pth')
 
         pd.DataFrame(log_data).to_csv(f'logs/{model_name}_{length}.csv', index=False)
-
-print("训练完成")
