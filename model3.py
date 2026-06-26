@@ -6,7 +6,7 @@ import torch.nn.functional as F
 class HalfPool1d(nn.Module):
     def forward(self, x):
         L = x.size(-1)
-        out_L = max(1, math.ceil(L / 2))  # 至少为 1
+        out_L = max(1, math.ceil(L / 2))
         return F.adaptive_max_pool1d(x, output_size=out_L)
 
 class TSExplorer(nn.Module):
