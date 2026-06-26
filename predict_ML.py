@@ -11,7 +11,7 @@ models = ["RandomForest_full",
             # "SVM_full"
             ]
 
-# 加载数据
+
 merged_data = np.load('postresearch/data/merged_data.npy')
 time_steps, bands, h, w = merged_data.shape
 merged_data = merged_data.reshape(time_steps, bands, h * w)
@@ -29,7 +29,7 @@ for model_name in models:
     with tqdm(dataloader, desc=f"Predicting {model_name}") as pbar:
         for batch in dataloader:
             batch = batch.numpy()
-            preds = model.predict(batch)  # 预测
+            preds = model.predict(batch)
             predictions.extend(preds)
             pbar.update(1)
 
