@@ -7,12 +7,7 @@ mask_change = cv2.imread('postresearch/data/mask_change.png', 0)
 mask_nochange = cv2.imread('postresearch/data/mask_nochange.png', 0)
 merged_data = np.load('postresearch/data/merged_data.npy')
 
-if mask_change is None:
-    raise FileNotFoundError("Error: 'data/mask_change.png' 文件未找到，请检查路径。")
-if mask_nochange is None:
-    raise FileNotFoundError("Error: 'data/mask_nochange.png' 文件未找到，请检查路径。")
 
-# 将两个 mask 调整为相同大小
 # mask_change = cv2.resize(mask_change, None, fx=2, fy=2, interpolation=cv2.INTER_NEAREST)
 # mask_nochange = cv2.resize(mask_nochange, None, fx=2, fy=2, interpolation=cv2.INTER_NEAREST)
 
@@ -58,5 +53,3 @@ for y, x in selected_background_coords:
     cv2.circle(vis_img, (x, y), 3, (255, 0, 0), -1)
 
 cv2.imwrite('postresearch/data/sample_visualization.png', vis_img)
-
-print(f"处理完成，样本数量: {len(all_coords)}，已保存不同长度的样本和标签以及可视化图像")
