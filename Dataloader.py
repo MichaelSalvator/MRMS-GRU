@@ -13,7 +13,7 @@ class RemoteSensingDataset(Dataset):
 
     def __getitem__(self, idx):
         sample = self.data[idx]
-        if sample.ndim == 2:  # 如果是(band, time)，不需要额外处理
+        if sample.ndim == 2:
             return torch.FloatTensor(sample), torch.LongTensor([self.labels[idx]])
         else:
             raise ValueError("Unexpected data dimensions")
