@@ -9,22 +9,22 @@ import rasterio
 
 warnings.filterwarnings("ignore", category=UserWarning)
 
-data_dir = "C:/Users/!Z#Y#C!/Desktop/new2/data10"  # 定义data目录路径
-output_npy = "data_npy"  # 定义输出image目录路径
+data_dir = "C:/Users/!Z#Y#C!/Desktop/new2/data10"
+output_npy = "data_npy"
 output_look = "data_look"
-os.makedirs(output_npy, exist_ok=True)  # 创建输出文件路径
-os.makedirs(output_look, exist_ok=True)  # 创建输出文件路径
+os.makedirs(output_npy, exist_ok=True)
+os.makedirs(output_look, exist_ok=True)
 
-# 对每张图的裁剪
+
 cut_list = [[[5100, 8560, 1000, 700]]]
 
-# 处理每景的遥感图像
+
 folder_names = os.listdir(data_dir)
 for folder_index in range(len(folder_names)):
     folder_name = folder_names[folder_index]
     bands_name = os.listdir(f"{data_dir}/{folder_name}")
 
-    # 剪裁坐标信息
+
     cuts = cut_list[0]
 
     for cut_index in range(len(cuts)):
@@ -39,7 +39,7 @@ for folder_index in range(len(folder_names)):
             band_data = band_data[y:y + h, x:x + w]
             bands_data.append(band_data)
 
-        # 合成rgb图像
+
         mid_B, mid_G, mid_R = bands_data[0] / bands_data[0].max(), bands_data[1] / bands_data[1].max(), bands_data[2] / bands_data[2].max()
         result_rgb = np.dstack((mid_B, mid_G, mid_R))
         result_rgb = exposure.equalize_hist(result_rgb) * 255
