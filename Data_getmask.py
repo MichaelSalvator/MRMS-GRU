@@ -12,5 +12,3 @@ result = np.zeros_like(img[:,:,0])
 result[red_mask != 0] = 255
 
 cv2.imwrite('data/mask2.png', result)
-
-print("处理完成，已保存为mask2.png")
